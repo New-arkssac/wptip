@@ -3,14 +3,15 @@
 //including the Mysql connect parameters.
 include("../sql-connections/db-creds.inc");
 @error_reporting(0);
-@$con1 = mysqli_connect($host, $dbuser, $dbpass);
+@$con = mysql_connect($host,$dbuser,$dbpass);
 // Check connection
-if (!$con1) {
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+if (!$con)
+{
+    echo "Failed to connect to MySQL: " . mysql_error();
 }
 
 
-@mysqli_select_db($con1, $dbname) or die("Unable to connect to the database: $dbname");
+    @mysql_select_db($dbname,$con) or die ( "Unable to connect to the database: $dbname");
 
 
 
@@ -20,10 +21,17 @@ if (!$con1) {
 $sql_connect = "SQL Connect included";
 ############################################
 # For Less-24
-$form_title_in = "Please Login to Continue";
-$form_title_ns = "New User";
-$feedback_title_ns = "New User";
-$form_title_ns = "Less-24";
+$form_title_in="Please Login to Continue";
+$form_title_ns="New User";
+$feedback_title_ns="New User";
+$form_title_ns= "Less-24";
 
 ############################################
 # For Challenge series--- Randomizing the Table names.
+
+?>
+
+
+
+
+ 
